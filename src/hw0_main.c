@@ -41,6 +41,7 @@ int main() {
     
 int y = 0;
 int a;
+int print = 1;
     int array[] = {2, 2, 2, 2, 0};
     while (true) {
         if(array[0]==0 && array[1]==0 && array[2]==0 && array[3]==0 ) 
@@ -49,7 +50,10 @@ int a;
             break;
         }
 
-        printf("%d %d %d %d | %d\n", array[0], array[1], array[2], array[3], array[4]);
+        if(print)
+            printf("%d %d %d %d | %d\n", array[0], array[1], array[2], array[3], array[4]);
+        else
+            print = 1;
         printf("Choose a section (1-4): ");
         scanf("%d", &a);
         int x = array[a-1];
@@ -57,11 +61,13 @@ int a;
 
         if(a > 4 || a<1 ) {
             printf("Invalid choice. ");
+            print = 0;
             continue;
         }
         // printf("%d %d", array[a-1], x);
         if(array[a-1]==0) {
             printf("Invalid choice. ");
+            print = 0;
             continue;
         }
         if(array[((a+x)-1)%5]==0 && (a+x)%5 != 0) {
