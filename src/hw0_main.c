@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+// Cse-220 homework0
 void update(int a, int x, int array[]) {
     array[a-1] = 0;
     for(int i=0; i<x; i++) {
