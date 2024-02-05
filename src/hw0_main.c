@@ -6,7 +6,6 @@ void update(int a, int x, int array[]) {
         array[(a+i)%5] += 1;
     }
 }
-
 void lastlanded(int a, int x, int array[]) {
     while(true) {
         int y = 0;
