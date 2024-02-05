@@ -45,7 +45,8 @@ int a;
 int x;
     int array[] = {2, 2, 2, 2, 0};
     while (true) {
-        if(array[0]==0 && array[1]==0 && array[2]==0 && array[3]==0 ) {
+        if(array[0]==0 && array[1]==0 && array[2]==0 && array[3]==0 ) 
+        {
             printf("You won!\n");
             break;
         }
