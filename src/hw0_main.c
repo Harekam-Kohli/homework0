@@ -55,16 +55,14 @@ int a;
         int x = array[a-1];
         // printf("%d", x);
 
-        while(a!= 1 && a!=2 && a!=3 && a!=4 ) {
-            printf("Invalid choice. Choose a section (1-4): ");
-            scanf("%d", &a);
-            // x = array[a-1];
+        if(a > 4 || a<1 ) {
+            printf("Invalid choice. ");
+            continue;
         }
         // printf("%d %d", array[a-1], x);
-        while(array[a-1]==0) {
-            printf("Invalid choice. Choose a section (1-4): ");
-            scanf("%d", &a);
-            // x = array[a-1];
+        if(array[a-1]==0) {
+            printf("Invalid choice. ");
+            continue;
         }
         if(array[((a+x)-1)%5]==0 && (a+x)%5 != 0) {
             update(a, x, array);
