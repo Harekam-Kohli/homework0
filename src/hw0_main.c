@@ -7,9 +7,9 @@ void update(int a, int x, int array[]) {
         array[(a+i)%5] += 1;
     }
 }
-void lastlanded(int a, int x, int array[]) {
+int lastlanded(int a, int x, int array[]) {
+    int y = 0;
     while(true) {
-        int y = 0;
         int z = (a+x)%5;
         if(z==1 || z==2 || z==3 || z==4 ) {
             printf("%d %d %d %d | %d\n", array[0], array[1], array[2], array[3], array[4]);
@@ -34,13 +34,13 @@ void lastlanded(int a, int x, int array[]) {
             break;
         }
     }
+    return y;
 }
 
 int main() {
     
 int y = 0;
 int a;
-int x;
     int array[] = {2, 2, 2, 2, 0};
     while (true) {
         if(array[0]==0 && array[1]==0 && array[2]==0 && array[3]==0 ) 
@@ -52,17 +52,21 @@ int x;
         printf("%d %d %d %d | %d\n", array[0], array[1], array[2], array[3], array[4]);
         printf("Choose a section (1-4): ");
         scanf("%d", &a);
-        x = array[a-1];
+        int x = array[a-1];
+        // printf("%d", x);
 
-        if(a!= 1 && a!=2 && a!=3 && a!=4 ) {
+        while(a!= 1 && a!=2 && a!=3 && a!=4 ) {
             printf("Invalid choice. Choose a section (1-4): ");
             scanf("%d", &a);
+            // x = array[a-1];
         }
-        if(x==0) {
+        // printf("%d %d", array[a-1], x);
+        while(array[a-1]==0) {
             printf("Invalid choice. Choose a section (1-4): ");
             scanf("%d", &a);
+            // x = array[a-1];
         }
-        else if(array[((a+x)-1)%5]==0 && (a+x)%5 != 0) {
+        if(array[((a+x)-1)%5]==0 && (a+x)%5 != 0) {
             update(a, x, array);
             printf("%d %d %d %d | %d\n", array[0], array[1], array[2], array[3], array[4]);
             printf("You lost because the last counter fell into section %d.\n", (a+x)%5);
@@ -72,7 +76,7 @@ int x;
             if(array[(((a+x)%5)-1)]!=0 || (a+x)%5 == 0)  {
                 update(a, x, array);
                 if(array[((a+x)%5)-1]!=0 && (a+x)%5 != 0) {
-                    lastlanded(a, x, array);
+                   y =  lastlanded(a, x, array);
                     if(y==1) {
                         break;
                     }
